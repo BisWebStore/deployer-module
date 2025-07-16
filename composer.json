@@ -15,7 +15,9 @@
     }
   ],
   "require": {
-    "oxid-esales/oxideshop-metapackage-ce": "^7.3",
+    "oxid-esales/oxideshop-metapackage-ce": "^7.3"
+  },
+  "require-dev": {
     "deployer/deployer": "^7.5"
   },
   "autoload": {
