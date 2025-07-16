@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @copyright Tim Bischoff - Software Developer
+ * @link https://bisweb.de
+ * @author Tim Bischoff - Software Developer <tim.bischoff@bisweb.de>
+ */
+
+$sMetadataVersion = '2.1';
+
+$aModule = [
+    'id' => 'bisweb_deployer',
+    'title' => 'BisWeb.de - Deployer',
+    'description' => 'For example, fix the module assets directory.',
+    'lang' => 'de',
+    'thumbnail' => '',
+    'version' => '1.0.0',
+    'author' => 'Tim Bischoff - Softwareentwickler',
+    'url' => 'https://bisweb.de',
+    'email' => 'tim.bischoff@bisweb.de',
+    'extend' => [
+        \OxidEsales\Eshop\Application\Core\ViewConfig::class => BisWeb\Deployer\Extension\Core\ViewConfig::class,
+    ],
+    'controllers' => [],
+    'settings' => [],
+    'events' => [],
+];

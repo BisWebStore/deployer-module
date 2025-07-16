@@ -1,0 +1,26 @@
+{
+  "name": "bisweb/deployer",
+  "description": "BisWeb Deployer Module for OXID eShop Community Edition Version 7.3 Series",
+  "version": "v1.0.0",
+  "type": "oxideshop-module",
+  "keywords": ["oxid", "modules", "eShop", "Deployer", "BisWeb"],
+  "homepage": "https://bisweb.de",
+  "license": ["GPL-3.0"],
+  "authors": [
+    {
+      "name": "Tim Bischoff",
+      "email": "tim.bischoff@bisweb.de",
+      "homepage": "https://bisweb.de",
+      "role": "Software Developer"
+    }
+  ],
+  "require": {
+    "oxid-esales/oxideshop-metapackage-ce": "^7.3",
+    "deployer/deployer": "^7.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "BisWeb\\Deployer\\": "src/"
+    }
+  }
+}
