@@ -16,7 +16,7 @@ $aModule = [
         'en' => 'For example, fix the module assets directory.'
     ],
     'lang' => 'de',
-    'thumbnail' => '',
+    'thumbnail' => 'logo.png',
     'version' => '1.0.0',
     'author' => 'Tim Bischoff - Softwareentwickler',
     'url' => 'https://bisweb.de',
