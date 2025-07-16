@@ -11,7 +11,10 @@ $sMetadataVersion = '2.1';
 $aModule = [
     'id' => 'bisweb_deployer',
     'title' => 'BisWeb.de - Deployer',
-    'description' => 'For example, fix the module assets directory.',
+    'description' => [
+        'de' => 'Korrigiert zum Beispiel das Assets Verzeichnis für Module.',
+        'en' => 'For example, fix the module assets directory.'
+    ],
     'lang' => 'de',
     'thumbnail' => '',
     'version' => '1.0.0',
