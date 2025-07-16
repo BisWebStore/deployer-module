@@ -19,7 +19,7 @@ $aModule = [
     'url' => 'https://bisweb.de',
     'email' => 'tim.bischoff@bisweb.de',
     'extend' => [
-        \OxidEsales\Eshop\Application\Core\ViewConfig::class => BisWeb\Deployer\Extension\Core\ViewConfig::class,
+        \OxidEsales\Eshop\Core\ViewConfig::class => BisWeb\Deployer\Extension\Core\ViewConfig::class,
     ],
     'controllers' => [],
     'settings' => [],

@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace BisWeb\Deployer\Extension\Component;
+namespace BisWeb\Deployer\Extension\Core;
 
 use OxidEsales\Eshop\Core\Registry;
 
