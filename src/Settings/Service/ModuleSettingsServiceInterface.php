@@ -17,4 +17,6 @@ interface ModuleSettingsServiceInterface
     public function getReplaceValue(): string;
 
     public function getSearchReplaceMode(): string;
+
+    public function isLoggingEnabled(): bool;
 }

@@ -36,4 +36,9 @@ readonly class ModuleSettingsService implements ModuleSettingsServiceInterface
         $mode = $this->moduleSettingService->getString('bisweb_deployer_SearchReplaceMode', 'bisweb_deployer')->trim()->toString();
         return (!empty($mode) && in_array($mode, ['deployer', 'ionos'])) ? $mode : 'deployer';
     }
+
+    public function isLoggingEnabled(): bool
+    {
+        return $this->moduleSettingService->getBoolean('bisweb_deployer_LoggerEnabled', 'bisweb_deployer');
+    }
 }

@@ -34,6 +34,12 @@ $aModule = [
             'value'       => 'deployer'
         ],
         [
+            'group' => 'bisweb_deployer_settings',
+            'name'  => 'bisweb_deployer_LoggerEnabled',
+            'type'  => 'bool',
+            'value' => false
+        ],
+        [
             #'group' => 'bisweb_deployer_settings',
             'name'  => 'bisweb_deployer_Search',
             'type'  => 'str',

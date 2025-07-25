@@ -19,4 +19,6 @@ $aLang = [
     'SHOP_MODULE_bisweb_deployer_SearchReplaceMode_deployer' => 'Deployer',
     'SHOP_MODULE_bisweb_deployer_SearchReplaceMode_ionos' => 'IONOS Server',
     'HELP_SHOP_MODULE_bisweb_deployer_SearchReplaceMode' => 'Einstellung Deployer korrigiert <code>$sModulePath</code>, IONOS Server korrigiert <code>$this->sShopDir</code> für das Laden der Modul Assets.',
+    'SHOP_MODULE_bisweb_deployer_LoggerEnabled' => 'Logger einschalten',
+    'HELP_SHOP_MODULE_bisweb_deployer_LoggerEnabled' => 'Logdatei liegt unter <code>/source/log/biswebdeployerlogger.log</code>',
 ];

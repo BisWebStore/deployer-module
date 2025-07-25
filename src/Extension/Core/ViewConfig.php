@@ -10,9 +10,13 @@ declare(strict_types=1);
 
 namespace BisWeb\Deployer\Extension\Core;
 
+use BisWeb\Deployer\Core\BisWebDeployerLogger;
 use BisWeb\Deployer\Settings\Service\ModuleSettingsServiceInterface;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EshopCommunity\Core\Di\ContainerFacade;
+use Psr\Log\LogLevel;
 
 class ViewConfig extends ViewConfig_parent
 {
@@ -31,7 +35,18 @@ class ViewConfig extends ViewConfig_parent
 
         // Workaround Assets CSS/JS Files Module URLs
         $moduleSettings = ContainerFacade::get(ModuleSettingsServiceInterface::class);
+        $blLogging = $moduleSettings->isLoggingEnabled();
         $sSearchReplaceMode = $moduleSettings->getSearchReplaceMode();
+
+        if ($blLogging) {
+            $logger = (new BisWebDeployerLogger())->getLogger();
+            $logger->info('------------------------------------');
+            $logger->info('The URL before the fix is: {url}', ['url' => $sUrl]);
+            $logger->info('Search Shop Directory: {shopDir}', ['shopDir' => $sShopDir]);
+            $logger->info('Replace Shop URL: {shopUrl}', ['shopDir' => $shopUrl]);
+            $logger->info('Module Path: {modulePath}', ['modulePath' => $sModulePath]);
+        }
+
         if ($sSearchReplaceMode == 'deployer') {
             $sBisWebDeployerSearch = $moduleSettings->getSearchValue();
             $sBisWebDeployerReplace = $moduleSettings->getReplaceValue();
@@ -57,6 +72,14 @@ class ViewConfig extends ViewConfig_parent
             $shopUrl,
             $sModulePath
         );
+
+        if ($blLogging) {
+            $logger->info('The URL after the fix is: {url}', ['url' => $sUrl]);
+            $logger->info('Search Shop Directory: {shopDir}', ['shopDir' => $sShopDir]);
+            $logger->info('Replace Shop URL: {shopUrl}', ['shopDir' => $shopUrl]);
+            $logger->info('Module Path: {modulePath}', ['modulePath' => $sModulePath]);
+            $logger->info('------------------------------------');
+        }
 
         return $sUrl;
     }
