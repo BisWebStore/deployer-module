@@ -15,4 +15,6 @@ interface ModuleSettingsServiceInterface
     public function getSearchValue(): string;
 
     public function getReplaceValue(): string;
+
+    public function getSearchReplaceMode(): string;
 }

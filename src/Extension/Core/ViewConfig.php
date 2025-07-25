@@ -19,33 +19,44 @@ class ViewConfig extends ViewConfig_parent
     public function getModuleUrl($sModule, $sFile = '') {
         $sUrl = parent::getModuleUrl($sModule, $sFile);
 
+        $c = Registry::getConfig();
+        $sShopDir = $c->getConfigParam('sShopDir');
+        $sShopDir = rtrim($sShopDir, '/');
+
+        $shopUrl = $c->getCurrentShopUrl();
+        $shopUrl = str_replace('admin', '', $shopUrl);
+        $shopUrl = rtrim($shopUrl, '/');
+
+        $sModulePath = $this->getModulePath($sModule, $sFile);
+
         // Workaround Assets CSS/JS Files Module URLs
         $moduleSettings = ContainerFacade::get(ModuleSettingsServiceInterface::class);
-        $sBisWebDeployerSearch = $moduleSettings->getSearchValue();
-        $sBisWebDeployerReplace = $moduleSettings->getReplaceValue();
-        if ($sBisWebDeployerSearch != '' && str_contains($sUrl, $sBisWebDeployerSearch)) {
-            $c = Registry::getConfig();
-            $sShopDir = $c->getConfigParam('sShopDir');
-            $sShopDir = rtrim($sShopDir, '/');
-
-            $shopUrl = $c->getCurrentShopUrl();
-            $shopUrl = str_replace('admin', '', $shopUrl);
-            $shopUrl = rtrim($shopUrl, '/');
+        $sSearchReplaceMode = $moduleSettings->getSearchReplaceMode();
+        if ($sSearchReplaceMode == 'deployer') {
+            $sBisWebDeployerSearch = $moduleSettings->getSearchValue();
+            $sBisWebDeployerReplace = $moduleSettings->getReplaceValue();
 
             // replace
             // /var/www/html/releases/20250716130017/source
             // with
             // /var/www/html/current/source
-            $sModulePath = $this->getModulePath($sModule, $sFile);
-            $sReleasesDir = substr($sModulePath, strpos($sModulePath, $sBisWebDeployerSearch.'/'), 23);
-            $sModulePath = str_replace($sReleasesDir, $sBisWebDeployerReplace, $sModulePath);
-
-            $sUrl = str_replace(
-                $sShopDir,
-                $shopUrl,
-                $sModulePath
-            );
+            if ($sBisWebDeployerSearch != '' && str_contains($sUrl, $sBisWebDeployerSearch)) {
+                $sReleasesDir = substr($sModulePath, strpos($sModulePath, $sBisWebDeployerSearch.'/'), 23);
+                $sModulePath = str_replace($sReleasesDir, $sBisWebDeployerReplace, $sModulePath);
+            }
+        } elseif ($sSearchReplaceMode == 'ionos') {
+            // replace
+            // /kunden/homepages
+            // with
+            // /homepages
+            $sShopDir = str_replace('/kunden/homepages', '/homepages', $sShopDir);
         }
+
+        $sUrl = str_replace(
+            $sShopDir,
+            $shopUrl,
+            $sModulePath
+        );
 
         return $sUrl;
     }

@@ -30,4 +30,10 @@ readonly class ModuleSettingsService implements ModuleSettingsServiceInterface
     {
         return $this->moduleSettingService->getString('bisweb_deployer_Replace', 'bisweb_deployer')->trim()->toString();
     }
+
+    public function getSearchReplaceMode(): string
+    {
+        $mode = $this->moduleSettingService->getString('bisweb_deployer_SearchReplaceMode', 'bisweb_deployer')->trim()->toString();
+        return (!empty($mode) && in_array($mode, ['deployer', 'ionos'])) ? $mode : 'deployer';
+    }
 }

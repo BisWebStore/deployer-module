@@ -27,6 +27,13 @@ $aModule = [
     'controllers' => [],
     'settings' => [
         [
+            'group'       => 'bisweb_deployer_settings',
+            'name'        => 'bisweb_deployer_SearchReplaceMode',
+            'type'        => 'select',
+            'constraints' => 'deployer|ionos',
+            'value'       => 'deployer'
+        ],
+        [
             #'group' => 'bisweb_deployer_settings',
             'name'  => 'bisweb_deployer_Search',
             'type'  => 'str',
