@@ -12,6 +12,7 @@ namespace BisWeb\Deployer\Extension\Core;
 
 use BisWeb\Deployer\Settings\Service\ModuleSettingsServiceInterface;
 use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\EshopCommunity\Core\Di\ContainerFacade;
 
 class ViewConfig extends ViewConfig_parent
 {
@@ -19,7 +20,7 @@ class ViewConfig extends ViewConfig_parent
         $sUrl = parent::getModuleUrl($sModule, $sFile);
 
         // Workaround Assets CSS/JS Files Module URLs
-        $moduleSettings = $this->getService(ModuleSettingsServiceInterface::class);
+        $moduleSettings = ContainerFacade::get(ModuleSettingsServiceInterface::class);
         $sBisWebDeployerSearch = $moduleSettings->getSearchValue();
         $sBisWebDeployerReplace = $moduleSettings->getReplaceValue();
         if ($sBisWebDeployerSearch != '' && str_contains($sUrl, $sBisWebDeployerSearch)) {
