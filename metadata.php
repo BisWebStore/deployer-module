@@ -27,13 +27,13 @@ $aModule = [
     'controllers' => [],
     'settings' => [
         [
-            'group' => 'bisweb_deployer_settings',
+            #'group' => 'bisweb_deployer_settings',
             'name'  => 'bisweb_deployer_Search',
             'type'  => 'str',
             'value' => 'releases'
         ],
         [
-            'group' => 'bisweb_deployer_settings',
+            #'group' => 'bisweb_deployer_settings',
             'name'  => 'bisweb_deployer_Replace',
             'type'  => 'str',
             'value' => 'current'
