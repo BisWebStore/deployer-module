@@ -18,9 +18,10 @@ class ViewConfig extends ViewConfig_parent
         $sUrl = parent::getModuleUrl($sModule, $sFile);
 
         // Workaround Assets CSS/JS Files Module URLs
-        if(str_contains($sUrl, 'releases')) {
-            $c = Registry::getConfig();
-
+        $c = Registry::getConfig();
+        $sBisWebDeployerSearch = $c->getConfigParam('bisweb_deployer_Search');
+        $sBisWebDeployerReplace = $c->getConfigParam('bisweb_deployer_Replace');
+        if(str_contains($sUrl, $sBisWebDeployerSearch)) {
             $sShopDir = $c->getConfigParam('sShopDir');
             $sShopDir = rtrim($sShopDir, '/');
 
@@ -33,8 +34,8 @@ class ViewConfig extends ViewConfig_parent
             // with
             // /var/www/html/current/source
             $sModulePath = $this->getModulePath($sModule, $sFile);
-            $sReleasesDir = substr($sModulePath, strpos($sModulePath, 'releases/'), 23);
-            $sModulePath = str_replace($sReleasesDir, 'current', $sModulePath);
+            $sReleasesDir = substr($sModulePath, strpos($sModulePath, $sBisWebDeployerSearch.'/'), 23);
+            $sModulePath = str_replace($sReleasesDir, $sBisWebDeployerReplace, $sModulePath);
 
             $sUrl = str_replace(
                 $sShopDir,

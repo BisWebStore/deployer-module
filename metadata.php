@@ -25,6 +25,19 @@ $aModule = [
         \OxidEsales\Eshop\Core\ViewConfig::class => BisWeb\Deployer\Extension\Core\ViewConfig::class,
     ],
     'controllers' => [],
-    'settings' => [],
+    'settings' => [
+        [
+            'group' => 'bisweb_deployer_settings',
+            'name'  => 'bisweb_deployer_Search',
+            'type'  => 'str',
+            'value' => 'releases'
+        ],
+        [
+            'group' => 'bisweb_deployer_settings',
+            'name'  => 'bisweb_deployer_Replace',
+            'type'  => 'str',
+            'value' => 'current'
+        ],
+    ],
     'events' => [],
 ];
