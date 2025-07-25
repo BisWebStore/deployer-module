@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace BisWeb\Deployer\Extension\Core;
 
+use BisWeb\Deployer\Settings\Service\ModuleSettingsServiceInterface;
 use OxidEsales\Eshop\Core\Registry;
 
 class ViewConfig extends ViewConfig_parent
@@ -18,10 +19,11 @@ class ViewConfig extends ViewConfig_parent
         $sUrl = parent::getModuleUrl($sModule, $sFile);
 
         // Workaround Assets CSS/JS Files Module URLs
-        $c = Registry::getConfig();
-        $sBisWebDeployerSearch = $c->getConfigParam('bisweb_deployer_Search');
-        $sBisWebDeployerReplace = $c->getConfigParam('bisweb_deployer_Replace');
-        if(str_contains($sUrl, $sBisWebDeployerSearch)) {
+        $moduleSettings = $this->getService(ModuleSettingsServiceInterface::class);
+        $sBisWebDeployerSearch = $moduleSettings->getSearchValue();
+        $sBisWebDeployerReplace = $moduleSettings->getReplaceValue();
+        if ($sBisWebDeployerSearch != '' && str_contains($sUrl, $sBisWebDeployerSearch)) {
+            $c = Registry::getConfig();
             $sShopDir = $c->getConfigParam('sShopDir');
             $sShopDir = rtrim($sShopDir, '/');
 

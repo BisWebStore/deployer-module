@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    public: false
+    autowire: true
+
+  BisWeb\Deployer\Settings\Service\ModuleSettingsServiceInterface:
+    class: BisWeb\Deployer\Settings\Service\ModuleSettingsService
+    public: true
