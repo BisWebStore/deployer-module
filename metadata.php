@@ -17,7 +17,7 @@ $aModule = [
     ],
     'lang' => 'de',
     'thumbnail' => 'logo.png',
-    'version' => '1.0.0',
+    'version' => '1.1.0',
     'author' => 'Tim Bischoff - Softwareentwickler',
     'url' => 'https://bisweb.de',
     'email' => 'tim.bischoff@bisweb.de',
